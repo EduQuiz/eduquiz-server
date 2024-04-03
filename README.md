@@ -1,4 +1,4 @@
-# Projeto de Fábrica de Sooftware
+# Projeto de Fábrica de Software
 
 Este é um projeto da faculdade desenvolvido com Node.js, Express.js e Prisma.
 Este README fornece todas as informações necessárias para configurar e executar o projeto em seu ambiente local.
@@ -66,8 +66,3 @@ Você pode acessar esta URL em seu navegador para interagir com o aplicativo.
 - `src/`: Contém o código-fonte principal do aplicativo.
 - `src/routes/`: Define as rotas da aplicação.
 - `src/controllers/`: Contém os controladores da aplicação.
-
-## Contribuindo
-
-Se você deseja contribuir com este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request. Estamos ansiosos para receber suas contribuições!
-com a equipe de desenvolvimento. Boa sorte com o seu projeto!
