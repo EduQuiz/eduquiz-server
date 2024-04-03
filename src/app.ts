@@ -4,7 +4,7 @@ import quizRouter from './routes/quizRouter';
 import userRouter from './routes/userRoute';
 import perguntaRouter from './routes/perguntaRouter';
 import cors from 'cors';
-import pontuacacaoRouter from './routes/pontuacaoRoute';
+import pontuacacaoRouter from './routes/pontuacaoRouter';
 
 const app = express();
 app.use(cors());
