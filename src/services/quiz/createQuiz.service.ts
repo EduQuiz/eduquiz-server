@@ -1,5 +1,5 @@
-import { clientDataBase } from '../../database/clientDataBase';
-import { CreateQuizDto } from '../../dtos/createQuizDto';
+import { clientDataBase } from "../../database/clientDataBase";
+import { CreateQuizDto } from "../../dtos/createQuizDto";
 
 export const createQuizService = async (data: CreateQuizDto) => {
   try {
@@ -21,6 +21,6 @@ export const createQuizService = async (data: CreateQuizDto) => {
 
     return { quiz: savedQuiz };
   } catch (error) {
-    console.error('Erro ao salvar quiz:', error);
+    console.error("Erro ao salvar quiz:", error);
   }
 };

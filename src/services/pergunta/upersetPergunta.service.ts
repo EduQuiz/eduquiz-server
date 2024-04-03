@@ -1,5 +1,5 @@
-import { clientDataBase } from '../../database/clientDataBase';
-import { PerguntaDto } from '../../dtos/perguntaDto';
+import { clientDataBase } from "../../database/clientDataBase";
+import { PerguntaDto } from "../../dtos/perguntaDto";
 
 export const upersetPergunta = async (pergunta: PerguntaDto) => {
   try {
@@ -33,7 +33,6 @@ export const upersetPergunta = async (pergunta: PerguntaDto) => {
         },
       });
 
-
       await clientDataBase.pergunta_Respota.update({
         where: {
           id: rp?.id,
@@ -44,8 +43,8 @@ export const upersetPergunta = async (pergunta: PerguntaDto) => {
       });
     });
 
-    return { msg: 'Atualizado com sucesso' };
+    return { msg: "Atualizado com sucesso" };
   } catch (error) {
-    console.error('Erro ao salvar quiz:', error);
+    console.error("Erro ao salvar quiz:", error);
   }
 };

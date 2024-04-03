@@ -1,4 +1,4 @@
-import { clientDataBase } from '../../database/clientDataBase';
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const createUserService = async (nome: string, senha: string) => {
   try {
@@ -11,6 +11,6 @@ export const createUserService = async (nome: string, senha: string) => {
       },
     });
   } catch (error) {
-    console.error('Erro ao salvar quiz:', error);
+    console.error("Erro ao salvar quiz:", error);
   }
 };

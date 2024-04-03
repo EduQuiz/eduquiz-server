@@ -1,4 +1,4 @@
-import { clientDataBase } from '../../database/clientDataBase';
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const findAllUsersService = async () => {
   try {
@@ -11,7 +11,7 @@ export const findAllUsersService = async () => {
     });
     return user;
   } catch (error) {
-    console.error('Erro ao buscar usuarios:', error);
+    console.error("Erro ao buscar usuarios:", error);
     return null;
   }
 };

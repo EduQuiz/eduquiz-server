@@ -1,4 +1,4 @@
-import { clientDataBase } from '../../database/clientDataBase';
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const findOnePergunta = async (id: string) => {
   try {
@@ -21,6 +21,6 @@ export const findOnePergunta = async (id: string) => {
 
     return { pergunta, respostas };
   } catch (error) {
-    console.error('Erro ao encontrar pergunta:', error);
+    console.error("Erro ao encontrar pergunta:", error);
   }
 };
