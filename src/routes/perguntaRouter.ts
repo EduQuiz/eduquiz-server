@@ -6,7 +6,7 @@ import {
   getOnePergunta,
   postPergunta,
   updatePergunta,
-} from '../controllers/perguntaControlle';
+} from '../controllers/perguntaController';
 
 const perguntaRouter = express.Router();
 
