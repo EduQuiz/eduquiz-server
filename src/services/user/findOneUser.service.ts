@@ -9,7 +9,6 @@ export const findOneUserService = async (id: string) => {
     }
 
     return user;
-
   } catch (error) {
     console.error('Erro ao buscar usuário ID:', error);
     return null;

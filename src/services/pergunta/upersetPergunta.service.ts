@@ -33,7 +33,6 @@ export const upersetPergunta = async (pergunta: PerguntaDto) => {
         },
       });
 
-
       await clientDataBase.pergunta_Respota.update({
         where: {
           id: rp?.id,

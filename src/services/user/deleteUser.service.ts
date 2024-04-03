@@ -4,7 +4,7 @@ export const deleteUserService = async (id: string) => {
   if (!id) {
     throw Error('Id invalido');
   }
-  
+
   const user = await clientDataBase.usuario.findUnique({ where: { id } });
 
   if (!user) {
