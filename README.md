@@ -1,6 +1,7 @@
-# Projeto da Faculdade - README
+# Projeto de Fábrica de Sooftware
 
-Este é um projeto da faculdade desenvolvido com Node.js, Express.js e Prisma. Este README fornece todas as informações necessárias para configurar e executar o projeto em seu ambiente local.
+Este é um projeto da faculdade desenvolvido com Node.js, Express.js e Prisma.
+Este README fornece todas as informações necessárias para configurar e executar o projeto em seu ambiente local.
 
 ## Pré-requisitos
 
@@ -33,13 +34,13 @@ Antes de começar, certifique-se de que você tenha as seguintes ferramentas ins
 1. Clone este repositório para o seu sistema local:
 
    ```bash
-   git clone https://github.com/seu-usuario/seu-projeto.git
+   git clone https://github.com/EduQuiz/eduquiz-server
    ```
 
 2. Navegue até o diretório do projeto:
 
    ```bash
-   cd seu-projeto
+   cd eduquiz-server
    ```
 
 3. Instale as dependências do Node.js usando o npm:
@@ -56,26 +57,17 @@ Agora que você configurou o banco de dados e instalou as dependências, você p
 npm start
 ```
 
-O servidor estará disponível em [http://localhost:3000](http://localhost:3000). Você pode acessar esta URL em seu navegador para interagir com o aplicativo.
+O servidor estará disponível em [http://localhost:3000](http://localhost:3000).
+Você pode acessar esta URL em seu navegador para interagir com o aplicativo.
 
 ## Estrutura do Projeto
 
-- `src/`: Contém o código-fonte principal do aplicativo.
 - `prisma/`: Contém os arquivos de configuração e migrações do Prisma.
-- `routes/`: Define as rotas da aplicação.
-- `models/`: Define os modelos de dados do Prisma.
-- `controllers/`: Contém os controladores da aplicação.
-- `middlewares/`: Contém os middlewares personalizados.
-- `config/`: Armazena as configurações do aplicativo.
+- `src/`: Contém o código-fonte principal do aplicativo.
+- `src/routes/`: Define as rotas da aplicação.
+- `src/controllers/`: Contém os controladores da aplicação.
 
 ## Contribuindo
 
 Se você deseja contribuir com este projeto, sinta-se à vontade para abrir uma issue ou enviar um pull request. Estamos ansiosos para receber suas contribuições!
-
-## Licença
-
-Este projeto é licenciado sob a [inserir licença aqui] License. Consulte o arquivo LICENSE.md para obter detalhes.
-
----
-
-Espero que este README seja útil para configurar e executar o seu projeto da faculdade. Se você tiver alguma dúvida ou encontrar problemas, não hesite em entrar em contato com a equipe de desenvolvimento. Boa sorte com o seu projeto!
+com a equipe de desenvolvimento. Boa sorte com o seu projeto!
