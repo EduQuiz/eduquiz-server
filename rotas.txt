@@ -1,0 +1,47 @@
+/quizzes
+
+  GET /
+
+  GET /:id
+
+  POST /create
+
+  DELETE /:id
+
+--
+
+/user
+
+  POST /login
+
+  POST /register
+
+  GET /
+
+  GET /:id
+
+  DELETE /:id
+
+--
+
+/pergunta
+
+  POST /
+
+  GET /all
+
+  GET /all/:quizIz
+
+  GET /:id
+
+  DELETE /:id
+
+  POST /update
+
+--
+
+/pontuacao
+
+  GET /:id
+
+  POST /
