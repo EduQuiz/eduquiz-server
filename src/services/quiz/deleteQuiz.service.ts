@@ -1,14 +1,14 @@
-import { clientDataBase } from '../../database/clientDataBase';
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const deleteQuizService = async (id: string) => {
   if (!id) {
-    throw Error('Id invalido');
+    throw Error("Id invalido");
   }
 
   const quiz = await clientDataBase.quiz.findUnique({ where: { id } });
 
   if (!quiz) {
-    throw Error('Id não encontrado');
+    throw Error("Id não encontrado");
   }
 
   const perguntas = await clientDataBase.pergunta.findMany({

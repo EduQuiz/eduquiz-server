@@ -1,4 +1,4 @@
-import { clientDataBase } from '../../database/clientDataBase';
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const findAllPerguntasWithQuizId = async (quizId: string) => {
   try {
@@ -38,6 +38,6 @@ export const findAllPerguntasWithQuizId = async (quizId: string) => {
 
     return pergunta_resposta;
   } catch (error) {
-    console.error('Erro ao retornar perguntas:', error);
+    console.error("Erro ao retornar perguntas:", error);
   }
 };

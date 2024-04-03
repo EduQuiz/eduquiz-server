@@ -1,13 +1,13 @@
-import express from 'express';
+import express from "express";
 import {
   getAllPontuacao,
   postPontuacao,
-} from '../controllers/pontuacaoController';
+} from "../controllers/pontuacaoController";
 const pontuacacaoRouter = express.Router();
 
 // Rota para obter todos os quizzes
-pontuacacaoRouter.get('/:id', getAllPontuacao);
+pontuacacaoRouter.get("/:id", getAllPontuacao);
 
-pontuacacaoRouter.post('/', postPontuacao);
+pontuacacaoRouter.post("/", postPontuacao);
 
 export default pontuacacaoRouter;

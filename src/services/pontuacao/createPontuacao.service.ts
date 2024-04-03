@@ -1,4 +1,4 @@
-import { clientDataBase } from '../../database/clientDataBase';
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const createPontuacao = async (
   usuarioId: string,
@@ -35,6 +35,6 @@ export const createPontuacao = async (
       });
     }
   } catch (error) {
-    console.error('Erro ao criar pontuacao:', error);
+    console.error("Erro ao criar pontuacao:", error);
   }
 };

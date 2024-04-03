@@ -1,4 +1,4 @@
-import { clientDataBase } from '../../database/clientDataBase';
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const findAllPontuacao = async (id: string) => {
   try {
@@ -18,6 +18,6 @@ export const findAllPontuacao = async (id: string) => {
 
     return pontuacao;
   } catch (error) {
-    console.error('Erro ao encontrar pontuacoes:', error);
+    console.error("Erro ao encontrar pontuacoes:", error);
   }
 };

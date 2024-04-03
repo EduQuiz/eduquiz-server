@@ -1,26 +1,26 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response } from "express";
 import {
   createUser,
   deleteUser,
   getAllUsers,
   getOneUser,
   postLogin,
-} from '../controllers/userController';
+} from "../controllers/userController";
 
 const userRouter = express.Router();
 
-userRouter.post('/login', postLogin);
+userRouter.post("/login", postLogin);
 
 // Rota para criar usuários
-userRouter.post('/register', createUser);
+userRouter.post("/register", createUser);
 
 // Rota para obter todos os usuarios
-userRouter.get('/', getAllUsers);
+userRouter.get("/", getAllUsers);
 
 // Rota para obter um usuario por ID
-userRouter.get('/:id', getOneUser);
+userRouter.get("/:id", getOneUser);
 
 // Rota para deleter usuario
-userRouter.delete('/:id', deleteUser);
+userRouter.delete("/:id", deleteUser);
 
 export default userRouter;

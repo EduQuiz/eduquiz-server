@@ -1,4 +1,4 @@
-import { clientDataBase } from '../../database/clientDataBase';
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const deleteOnePergunta = async (id: string) => {
   try {
@@ -34,8 +34,8 @@ export const deleteOnePergunta = async (id: string) => {
       });
     });
 
-    return { msg: 'deletado com sucesso' };
+    return { msg: "deletado com sucesso" };
   } catch (error) {
-    console.error('Erro ao deleter pergunta:', error);
+    console.error("Erro ao deleter pergunta:", error);
   }
 };
