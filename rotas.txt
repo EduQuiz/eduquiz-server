@@ -1,10 +1,14 @@
 /quizzes
 
   GET /
+    < [{}]
 
   GET /:id
+    < {}
 
   POST /create
+    > { titulo, descricao, urlImageQuiz, perguntas }
+    < 201
 
   DELETE /:id
 
@@ -13,12 +17,17 @@
 /user
 
   POST /login
+    > { usuario, senha }
 
   POST /register
+    > { usuario, senha }
+    < 201
 
   GET /
+    < [{}]
 
   GET /:id
+    < {}
 
   DELETE /:id
 
@@ -27,16 +36,23 @@
 /pergunta
 
   POST /
+    > { id, titulo, description, respostas }
+    < 201
 
   GET /all
+    < [{}]
 
   GET /all/:quizIz
+    < {}
 
   GET /:id
+    < { id, titulo, description, respostas }
 
   DELETE /:id
 
   POST /update
+    > { id, titulo, description, respostas }
+    < 203
 
 --
 
