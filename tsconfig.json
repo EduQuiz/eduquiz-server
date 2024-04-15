@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext"
   }
 }
