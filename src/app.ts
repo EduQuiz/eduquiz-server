@@ -2,10 +2,10 @@ import express from "express";
 
 import cors from "cors";
 
-import perguntaRouter from "./routes/perguntaRouter";
-import pontuacacaoRouter from "./routes/pontuacaoRouter";
-import quizRouter from "./routes/quizRouter";
-import userRouter from "./routes/userRouter";
+import perguntaRouter from "./routes/perguntaRouter.js";
+import pontuacacaoRouter from "./routes/pontuacaoRouter.js";
+import quizRouter from "./routes/quizRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 const app = express();
 

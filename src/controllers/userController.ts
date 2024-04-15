@@ -1,10 +1,10 @@
 import type { Request, Response } from "express";
 
-import { createUserService } from "../services/user/createUser.service";
-import { deleteUserService } from "../services/user/deleteUser.service";
-import { findAllUsersService } from "../services/user/findAllUsers.service";
-import { findOneUserService } from "../services/user/findOneUser.service";
-import { realiseLogin } from "../services/user/realiseLogin.service";
+import { createUserService } from "../services/user/createUser.service.js";
+import { deleteUserService } from "../services/user/deleteUser.service.js";
+import { findAllUsersService } from "../services/user/findAllUsers.service.js";
+import { findOneUserService } from "../services/user/findOneUser.service.js";
+import { realiseLogin } from "../services/user/realiseLogin.service.js";
 
 export const createUser = async (req: Request, res: Response) => {
   try {

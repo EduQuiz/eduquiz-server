@@ -1,7 +1,7 @@
 import type { Request, Response } from "express";
 
-import { createPontuacao } from "../services/pontuacao/createPontuacao.service";
-import { findAllPontuacao } from "../services/pontuacao/findAllPontuacao.service";
+import { createPontuacao } from "../services/pontuacao/createPontuacao.service.js";
+import { findAllPontuacao } from "../services/pontuacao/findAllPontuacao.service.js";
 
 export const getAllPontuacao = async (req: Request, res: Response) => {
   try {
