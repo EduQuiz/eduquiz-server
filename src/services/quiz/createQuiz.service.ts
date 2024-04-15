@@ -1,5 +1,6 @@
-import { clientDataBase } from "../../database/clientDataBase";
 import type { CreateQuizDto } from "../../dtos/createQuizDto";
+
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const createQuizService = async (data: CreateQuizDto) => {
   try {

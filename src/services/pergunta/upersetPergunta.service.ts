@@ -1,5 +1,6 @@
-import { clientDataBase } from "../../database/clientDataBase";
 import type { PerguntaDto } from "../../dtos/perguntaDto";
+
+import { clientDataBase } from "../../database/clientDataBase";
 
 export const upersetPergunta = async (pergunta: PerguntaDto) => {
   try {
