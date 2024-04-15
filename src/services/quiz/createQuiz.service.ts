@@ -1,23 +1,24 @@
-import { clientDataBase } from "../../database/clientDataBase";
-import { CreateQuizDto } from "../../dtos/createQuizDto";
+import type { CreateQuizDto } from "../../dtos/createQuizDto.js";
+
+import { clientDataBase } from "../../database/clientDataBase.js";
 
 export const createQuizService = async (data: CreateQuizDto) => {
   try {
-    let savedQuiz = await clientDataBase.quiz.create({
+    const savedQuiz = await clientDataBase.quiz.create({
       data: {
         nome: data.titulo,
         description: data.descricao,
       },
     });
 
-    data.perguntas.forEach(async (p) => {
+    for (const p of data.perguntas) {
       await clientDataBase.pergunta.update({
         data: {
           quizId: savedQuiz.id,
         },
         where: { id: p },
       });
-    });
+    }
 
     return { quiz: savedQuiz };
   } catch (error) {

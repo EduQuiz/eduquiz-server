@@ -1,8 +1,10 @@
 import express from "express";
+
 import {
   getAllPontuacao,
   postPontuacao,
-} from "../controllers/pontuacaoController";
+} from "../controllers/pontuacaoController.js";
+
 const pontuacacaoRouter = express.Router();
 
 // Rota para obter todos os quizzes

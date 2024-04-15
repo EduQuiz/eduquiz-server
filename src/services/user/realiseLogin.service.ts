@@ -1,4 +1,4 @@
-import { clientDataBase } from "../../database/clientDataBase";
+import { clientDataBase } from "../../database/clientDataBase.js";
 
 export const realiseLogin = async (usuario: string, senha: string) => {
   try {

@@ -1,9 +1,10 @@
-import { Request, Response } from "express";
-import { findAllQuizzesService } from "../services/quiz/findAll-quizzes.service";
-import { findOneQuizService } from "../services/quiz/findOne-quiz.service";
-import { createQuizService } from "../services/quiz/createQuiz.service";
-import { deleteQuizService } from "../services/quiz/deleteQuiz.service";
-import { CreateQuizDto } from "../dtos/createQuizDto";
+import type { Request, Response } from "express";
+import type { CreateQuizDto } from "../dtos/createQuizDto.js";
+
+import { createQuizService } from "../services/quiz/createQuiz.service.js";
+import { deleteQuizService } from "../services/quiz/deleteQuiz.service.js";
+import { findAllQuizzesService } from "../services/quiz/findAll-quizzes.service.js";
+import { findOneQuizService } from "../services/quiz/findOne-quiz.service.js";
 
 export const getAllQuizzes = async (req: Request, res: Response) => {
   try {
@@ -30,7 +31,7 @@ export const createQuiz = async (req: Request, res: Response) => {
   try {
     console.log("createQuiz, req.body", req.body);
     const data: CreateQuizDto = req.body;
-    const quiz: any = await createQuizService(data);
+    const quiz = await createQuizService(data);
     return res.status(201).json(quiz);
   } catch (error) {
     console.log(error);

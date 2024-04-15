@@ -1,10 +1,11 @@
 import express from "express";
+
 import {
+  createQuiz,
   deleteQuiz,
   getAllQuizzes,
   getOneQuizze,
-  createQuiz,
-} from "../controllers/quizController";
+} from "../controllers/quizController.js";
 
 const quizRouter = express.Router();
 

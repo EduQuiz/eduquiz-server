@@ -1,4 +1,4 @@
-import { clientDataBase } from "../../database/clientDataBase";
+import { clientDataBase } from "../../database/clientDataBase.js";
 
 export const findAllPerguntasWithQuizId = async (quizId: string) => {
   try {
@@ -13,7 +13,7 @@ export const findAllPerguntasWithQuizId = async (quizId: string) => {
       },
     });
 
-    let pergunta_resposta = [] as any[];
+    const pergunta_resposta = [];
 
     for (const pergunta of perguntas) {
       const resposta = await clientDataBase.pergunta_Respota.findMany({

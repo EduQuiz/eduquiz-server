@@ -1,5 +1,6 @@
-import { clientDataBase } from "../../database/clientDataBase";
-import { PerguntaDto } from "../../dtos/perguntaDto";
+import type { PerguntaDto } from "../../dtos/perguntaDto.js";
+
+import { clientDataBase } from "../../database/clientDataBase.js";
 
 export const upersetPergunta = async (pergunta: PerguntaDto) => {
   try {
@@ -13,7 +14,7 @@ export const upersetPergunta = async (pergunta: PerguntaDto) => {
       },
     });
 
-    pergunta.respostas.forEach(async (r) => {
+    for (const r of pergunta.respostas) {
       const resposta = await clientDataBase.resposta.update({
         where: {
           id: r.id,
@@ -41,7 +42,7 @@ export const upersetPergunta = async (pergunta: PerguntaDto) => {
           resultado: r.resultado,
         },
       });
-    });
+    }
 
     return { msg: "Atualizado com sucesso" };
   } catch (error) {

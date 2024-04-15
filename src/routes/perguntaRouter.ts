@@ -1,4 +1,5 @@
 import express from "express";
+
 import {
   deletePergunta,
   getAllPerguntas,
@@ -6,7 +7,7 @@ import {
   getOnePergunta,
   postPergunta,
   updatePergunta,
-} from "../controllers/perguntaController";
+} from "../controllers/perguntaController.js";
 
 const perguntaRouter = express.Router();
 
