@@ -1,11 +1,12 @@
-import { Request, Response } from "express";
-import { PerguntaDto } from "../dtos/perguntaDto";
+import type { Request, Response } from "express";
+import type { PerguntaDto } from "../dtos/perguntaDto";
+
 import { createPergunta } from "../services/pergunta/createPergunta.service";
-import { findAllPerguntas } from "../services/pergunta/findAllPergunta.service";
-import { findOnePergunta } from "../services/pergunta/findOneQuestion.service";
 import { deleteOnePergunta } from "../services/pergunta/deletePergunta.service";
-import { upersetPergunta } from "../services/pergunta/upersetPergunta.service";
+import { findAllPerguntas } from "../services/pergunta/findAllPergunta.service";
 import { findAllPerguntasWithQuizId } from "../services/pergunta/findAllPerguntasWithQuizId.service";
+import { findOnePergunta } from "../services/pergunta/findOneQuestion.service";
+import { upersetPergunta } from "../services/pergunta/upersetPergunta.service";
 
 export const postPergunta = async (req: Request, res: Response) => {
   try {

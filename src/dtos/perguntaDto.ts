@@ -1,4 +1,4 @@
-import { RespostaDto } from "./respostaDto";
+import type { RespostaDto } from "./respostaDto";
 
 export interface PerguntaDto {
   id: string;

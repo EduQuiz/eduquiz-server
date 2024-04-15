@@ -13,7 +13,7 @@ export const findAllPerguntasWithQuizId = async (quizId: string) => {
       },
     });
 
-    let pergunta_resposta = [] as any[];
+    const pergunta_resposta = [];
 
     for (const pergunta of perguntas) {
       const resposta = await clientDataBase.pergunta_Respota.findMany({

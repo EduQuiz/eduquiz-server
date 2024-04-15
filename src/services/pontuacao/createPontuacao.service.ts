@@ -5,27 +5,15 @@ export const createPontuacao = async (
   pontuacao: number,
   quizId: string,
 ) => {
-  let pontucaoExistente;
   try {
-    pontucaoExistente = await clientDataBase.pontuacacao.findFirst({
+    const pontucaoExistente = await clientDataBase.pontuacacao.findFirst({
       where: {
         quizId,
         usuarioId,
       },
     });
 
-    if (pontucaoExistente) {
-      return await clientDataBase.pontuacacao.update({
-        where: {
-          id: pontucaoExistente.id,
-        },
-        data: {
-          pontuacao,
-          usuarioId,
-          quizId,
-        },
-      });
-    } else {
+    if (!pontucaoExistente) {
       return await clientDataBase.pontuacacao.create({
         data: {
           pontuacao,
@@ -34,6 +22,17 @@ export const createPontuacao = async (
         },
       });
     }
+
+    return await clientDataBase.pontuacacao.update({
+      where: {
+        id: pontucaoExistente.id,
+      },
+      data: {
+        pontuacao,
+        usuarioId,
+        quizId,
+      },
+    });
   } catch (error) {
     console.error("Erro ao criar pontuacao:", error);
   }

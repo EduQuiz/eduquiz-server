@@ -1,5 +1,5 @@
 import { clientDataBase } from "../../database/clientDataBase";
-import { PerguntaDto } from "../../dtos/perguntaDto";
+import type { PerguntaDto } from "../../dtos/perguntaDto";
 
 export const createPergunta = async (pergunta: PerguntaDto) => {
   try {
@@ -10,7 +10,7 @@ export const createPergunta = async (pergunta: PerguntaDto) => {
       },
     });
 
-    pergunta.respostas.forEach(async (r) => {
+    for (const r of pergunta.respostas) {
       const respostaCriada = await clientDataBase.resposta.create({
         data: {
           descricao: r.description,
@@ -24,7 +24,7 @@ export const createPergunta = async (pergunta: PerguntaDto) => {
           resultado: r.resultado,
         },
       });
-    });
+    }
 
     return { msg: "Criado com sucesso" };
   } catch (error) {

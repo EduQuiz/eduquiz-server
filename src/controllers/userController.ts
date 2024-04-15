@@ -1,4 +1,5 @@
-import { Request, Response } from "express";
+import type { Request, Response } from "express";
+
 import { createUserService } from "../services/user/createUser.service";
 import { deleteUserService } from "../services/user/deleteUser.service";
 import { findAllUsersService } from "../services/user/findAllUsers.service";
