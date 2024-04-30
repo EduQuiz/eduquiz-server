@@ -25,7 +25,7 @@ model Pergunta {
 }
 
 model Pergunta_Respota {
-  id         String   @id @unique @default(cuid())
+  id         String   @id @default(cuid())
   resultado  Boolean
   perguntaId String
   respostaId String
