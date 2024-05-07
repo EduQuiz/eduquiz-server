@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts",
-    "build": "npx prisma generate && tsc",
+    "build": "prisma generate && tsc",
     "start": "npm run build && node ./dist/app.js",
     "watch": "tsc --watch & node --watch dist/app.js"
   },
