@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts",
-    "build": "npx prisma generate && tsc",
+    "build": "prisma generate && tsc",
     "start": "npm run build && node ./dist/app.js",
     "watch": "tsc --watch & node --watch dist/app.js"
   },
@@ -19,5 +19,6 @@
     "@prisma/client": "^5.13.0",
     "cors": "^2.8.5",
     "express": "^4.19.2"
-  }
+  },
+  "packageManager": "npm@10.6.0+sha256.7cf2bab20176def9dc5821f99b9712bd1b0bb5843ec1f243074c29f881d79c94"
 }
