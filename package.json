@@ -5,7 +5,8 @@
     "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts",
     "build": "prisma generate && tsc",
     "start": "npm run build && node ./dist/app.js",
-    "watch": "tsc --watch & node --watch dist/app.js"
+    "watch": "tsc --watch & node --watch dist/app.js",
+    "biome": "biome check --apply src"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.7.3",
