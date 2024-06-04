@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "../dist/prisma"
+  output   = "../dist/prisma"
 }
 
 datasource db {
@@ -8,52 +8,46 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Quiz {
-  id          String        @id @default(cuid())
-  nome        String
-  description String
-  Pontuacacao Pontuacacao[]
-  perguntas   Pergunta[]
+model Questionario {
+  id        String     @id @default(cuid())
+  titulo    String
+  criadorId String
+  criador   Criador    @relation(fields: [criadorId], references: [id])
+  perguntas Pergunta[]
+  respostas Resposta[]
 }
 
 model Pergunta {
-  id               String             @id @default(cuid())
-  titulo           String
-  quizId           String?
-  description      String
-  Pergunta_Respota Pergunta_Respota[]
-  Quiz             Quiz?              @relation(fields: [quizId], references: [id])
+  id            String         @id @default(cuid())
+  pergunta      String
+  questionarios Questionario[]
+  alternativas  Alternativa[]
+  respostas     Resposta[]
 }
 
-model Pergunta_Respota {
-  id         String   @id @default(cuid())
-  resultado  Boolean
-  perguntaId String
-  respostaId String
-  pergunta   Pergunta @relation(fields: [perguntaId], references: [id])
-  resposta   Resposta @relation(fields: [respostaId], references: [id])
+model Alternativa {
+  id          String     @id @default(cuid())
+  alternativa String
+  pergunta    Pergunta   @relation(fields: [perguntaId], references: [id])
+  perguntaId  String
+  respostas   Resposta[]
+  correta     Boolean
 }
 
 model Resposta {
-  id               String             @id @default(cuid())
-  descricao        String
-  Pergunta_Respota Pergunta_Respota[]
+  id             String       @id @default(cuid())
+  questionarioId String
+  questionario   Questionario @relation(fields: [questionarioId], references: [id])
+  perguntaId     String
+  pergunta       Pergunta     @relation(fields: [perguntaId], references: [id])
+  alternativaId  String
+  alternativa    Alternativa  @relation(fields: [alternativaId], references: [id])
 }
 
-model Usuario {
-  id         String        @id @default(cuid())
-  nome       String
-  email      String?
-  senha      String?
-  meusPontos Pontuacacao[]
-  tipo       Boolean
-}
-
-model Pontuacacao {
-  id        String   @id @default(cuid())
-  pontuacao Int
-  usuarioId String?
-  quizId    String?
-  Usuario   Usuario? @relation(fields: [usuarioId], references: [id])
-  Quiz      Quiz?    @relation(fields: [quizId], references: [id])
+model Criador {
+  id            String         @id @default(cuid())
+  nome          String
+  email         String
+  senha         String
+  questionarios Questionario[]
 }
