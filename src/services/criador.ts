@@ -28,13 +28,7 @@ export const removerCriador = async (id: string) => {
 
 export const encontrarTodosCriadores = async () => {
   try {
-    return await db.criador.findMany({
-      select: {
-        id: true,
-        nome: true,
-        email: true,
-      },
-    });
+    return await db.criador.findMany();
   } catch (error) {
     console.error(error);
   }
@@ -50,19 +44,12 @@ export const encontrarCriador = async (id: string) => {
 
 export const entrar = async (email: string, senha: string) => {
   try {
-    const criador = await db.criador.findFirst({
+    return await db.criador.findUnique({
       where: {
         email,
         senha,
       },
-      select: { id: true, nome: true, email: true },
     });
-
-    if (!criador) {
-      return { msg: "credenciais invalidas" };
-    }
-
-    return criador;
   } catch (error) {
     console.error(error);
   }
