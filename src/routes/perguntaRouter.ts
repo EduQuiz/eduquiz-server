@@ -11,17 +11,11 @@ import {
 
 const perguntaRouter = express.Router();
 
-// Rota para obter todos os quizzes
+perguntaRouter.get("/", getAllPerguntas);
 perguntaRouter.post("/", postPergunta);
-
-perguntaRouter.get("/all", getAllPerguntas);
-
-perguntaRouter.get("/all/:quizId", getAllPerguntasWithIdQuiz);
-
 perguntaRouter.get("/:id", getOnePergunta);
-
 perguntaRouter.delete("/:id", deletePergunta);
-
-perguntaRouter.post("/update", updatePergunta);
+perguntaRouter.patch("/:id", updatePergunta);
+//perguntaRouter.get("/questionario/:id", getAllPerguntasWithIdQuiz);
 
 export default perguntaRouter;

@@ -19,7 +19,11 @@ export const novoCriador = async (
 };
 
 export const removerCriador = async (id: string) => {
-  return await db.criador.delete({ where: { id } });
+  try {
+    return await db.criador.delete({ where: { id } });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const encontrarTodosCriadores = async () => {
