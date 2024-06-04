@@ -1,9 +1,9 @@
 import type { Request, Response } from "express";
 import {
   criarQuestionario,
-  removerQuestionario,
   encontarTodos,
   encontrarQuestionario,
+  removerQuestionario,
 } from "../services/questionario.js";
 
 export const getAllQuizzes = async (req: Request, res: Response) => {
