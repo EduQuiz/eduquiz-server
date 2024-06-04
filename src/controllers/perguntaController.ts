@@ -1,19 +1,18 @@
 import type { Request, Response } from "express";
 import type { Pergunta, PerguntaEAlternativas } from "../services/pergunta.js";
 import {
-  deleteOnePergunta,
+  encontrarPergunta,
   findAllPerguntas,
   findAllPerguntasWithQuizId,
-  findOnePergunta,
   novaPergunta,
+  removerPergunta,
   upersetPergunta,
 } from "../services/pergunta.js";
 
 export const postPergunta = async (req: Request, res: Response) => {
   try {
-    console.log("postPergunta,  body:", req.body);
-    const data: PerguntaEAlternativas = req.body;
-    const resp = await novaPergunta(data);
+    const { pergunta, alternativas } = req.body;
+    const resp = await novaPergunta(pergunta, alternativas);
     return res.status(200).json(resp);
   } catch (error) {
     console.log(error);
@@ -46,21 +45,23 @@ export const getAllPerguntasWithIdQuiz = async (
 
 export const getOnePergunta = async (req: Request, res: Response) => {
   try {
-    console.log("GetOnePergunta, params.id:", req.params.id);
-    const resp = await findOnePergunta(req.params.id);
+    const { id } = req.params;
+    const resp = await encontrarPergunta(id);
     return res.status(200).json(resp);
   } catch (error) {
     console.log(error);
+    return res.status(201).json({});
   }
 };
 
 export const deletePergunta = async (req: Request, res: Response) => {
   try {
-    console.log("deletePergunta, params.id:", req.params.id);
-    const resp = await deleteOnePergunta(req.params.id);
+    const { id } = req.params;
+    const resp = await removerPergunta(id);
     return res.status(200).json(resp);
   } catch (error) {
     console.log(error);
+    return res.status(201).json({});
   }
 };
 

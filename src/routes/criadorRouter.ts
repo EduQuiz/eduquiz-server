@@ -6,11 +6,11 @@ import {
   getAllUsers,
   getOneUser,
   postLogin,
-} from "../controllers/userController.js";
+} from "../controllers/criadorController.js";
 
 export const criadorRouter = express.Router();
 
-criadorRouter.post("/login", postLogin);
+criadorRouter.post("/entrar", postLogin);
 criadorRouter.post("/", createUser);
 criadorRouter.get("/", getAllUsers);
 criadorRouter.get("/:id", getOneUser);

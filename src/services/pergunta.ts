@@ -17,122 +17,41 @@ export interface PerguntaEAlternativas {
 }
 
 export const novaPergunta = async (
-  perguntaEAlternativas: PerguntaEAlternativas,
+  pergunta: string,
+  alternativas: { alternativa: string; correta?: boolean }[],
 ) => {
-  const { pergunta, alternativas } = perguntaEAlternativas;
-
   try {
-    /*
-    const perguntaCriada = await clientDataBase.pergunta.create({
+    return await db.pergunta.create({
       data: {
-        pergunta: pergunta.pergunta,
+        pergunta,
+        alternativas: {
+          create: alternativas,
+        },
       },
     });
-
-    for (const a of alternativas) {
-      const respostaCriada = await clientDataBase.resposta.create({
-        data: {
-          descricao: r.description,
-        },
-      });
-
-      await clientDataBase.pergunta_Respota.create({
-        data: {
-          perguntaId: perguntaCriada.id,
-          respostaId: respostaCriada.id,
-          resultado: r.resultado,
-        },
-      });
-    }
-    */
-
-    return { msg: "Criado com sucesso" };
   } catch (error) {
-    console.error("Erro ao salvar quiz:", error);
+    console.error(error);
+    return {};
   }
 };
 
-export const deleteOnePergunta = async (id: string) => {
+export const removerPergunta = async (id: string) => {
   try {
-    /*
-    await clientDataBase.$transaction(async (prisma) => {
-      // Encontra todas as respostas associadas à pergunta
-      const respostas = await prisma.pergunta_Respota.findMany({
-        where: {
-          perguntaId: id,
-        },
-      });
-
-      // Deleta as respostas associadas à pergunta
-      await prisma.pergunta_Respota.deleteMany({
-        where: {
-          perguntaId: id,
-        },
-      });
-
-      // Deleta a pergunta
-      await prisma.pergunta.delete({
-        where: {
-          id: id,
-        },
-      });
-
-      // Deleta as respostas encontradas
-      await prisma.resposta.deleteMany({
-        where: {
-          id: {
-            in: respostas.map((r) => r.respostaId),
-          },
-        },
-      });
-
-    });
-    */
-
-    return { msg: "deletado com sucesso" };
+    return db.pergunta.delete({ where: { id } });
   } catch (error) {
-    console.error("Erro ao deleter pergunta:", error);
+    console.error(error);
   }
 };
 
 export const findAllPerguntas = async () => {
   try {
-    /*
-    const perguntas = await clientDataBase.pergunta.findMany({
-      select: {
-        id: true,
-        titulo: true,
-        description: true,
+    return await db.pergunta.findMany({
+      include: {
+        alternativas: true,
       },
     });
-
-    const pergunta_resposta = [];
-
-    for (const pergunta of perguntas) {
-      const resposta = await clientDataBase.pergunta_Respota.findMany({
-        where: {
-          perguntaId: pergunta.id,
-        },
-        select: {
-          id: true,
-          resposta: true,
-          resultado: true,
-        },
-      });
-
-      const respostas = resposta.map((r) => {
-        const resultado = r.resultado;
-        const description = r.resposta.descricao;
-        const id = r.resposta.id;
-        return { description, resultado, id };
-      });
-      pergunta_resposta.push({ ...pergunta, respostas });
-    }
-    */
-
-    return {};
   } catch (error) {
-    console.error("Erro ao retornar perguntas:", error);
+    console.error(error);
   }
 };
 
@@ -179,30 +98,14 @@ export const findAllPerguntasWithQuizId = async (quizId: string) => {
   }
 };
 
-export const findOnePergunta = async (id: string) => {
+export const encontrarPergunta = async (id: string) => {
   try {
-    /*
-    const pergunta = await clientDataBase.pergunta.findUnique({
-      where: {
-        id,
-      },
+    return await db.pergunta.findUnique({
+      where: { id },
+      include: { alternativas: true },
     });
-
-    const respostas = await clientDataBase.pergunta_Respota.findMany({
-      where: {
-        perguntaId: pergunta?.id,
-      },
-      select: {
-        respostaId: true,
-        resposta: true,
-        resultado: true,
-      },
-    });
-    */
-
-    return {};
   } catch (error) {
-    console.error("Erro ao encontrar pergunta:", error);
+    console.error(error);
   }
 };
 
