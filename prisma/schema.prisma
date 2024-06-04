@@ -12,7 +12,7 @@ model Questionario {
   id        String     @id @default(cuid())
   titulo    String
   criadorId String
-  criador   Criador    @relation(fields: [criadorId], references: [id])
+  criador   Criador    @relation(fields: [criadorId], references: [id], onDelete: Cascade)
   perguntas Pergunta[]
   respostas Resposta[]
 }
