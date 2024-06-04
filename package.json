@@ -6,7 +6,7 @@
     "build": "prisma generate && tsc",
     "start": "npm run build && node ./dist/app.js",
     "watch": "tsc --watch & node --watch dist/app.js",
-    "biome": "biome check --apply src"
+    "biome": "biome check --write src"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.0",
