@@ -7,52 +7,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Quiz {
+model Questionario {
   id          String        @id @default(cuid())
-  nome        String
-  description String
-  Pontuacacao Pontuacacao[]
-  perguntas   Pergunta[]
+  titulo      String
 }
 
 model Pergunta {
   id               String             @id @default(cuid())
-  titulo           String
-  quizId           String?
-  description      String
-  Pergunta_Respota Pergunta_Respota[]
-  Quiz             Quiz?              @relation(fields: [quizId], references: [id])
+  pergunta           String
+  imagem           String 
 }
 
-model Pergunta_Respota {
-  id         String   @id @unique @default(cuid())
-  resultado  Boolean
-  perguntaId String
-  respostaId String
-  pergunta   Pergunta @relation(fields: [perguntaId], references: [id])
-  resposta   Resposta @relation(fields: [respostaId], references: [id])
-}
-
-model Resposta {
+model Alternativa {
   id               String             @id @default(cuid())
-  descricao        String
-  Pergunta_Respota Pergunta_Respota[]
+  alternativa        String
+  correta Boolean
 }
 
-model Usuario {
+model Criador {
   id         String        @id @default(cuid())
   nome       String
-  email      String?
-  senha      String?
-  meusPontos Pontuacacao[]
-  tipo       Boolean
+  email      String
+  senha      String
 }
 
-model Pontuacacao {
-  id        String   @id @default(cuid())
-  pontuacao Int
-  usuarioId String?
-  quizId    String?
-  Usuario   Usuario? @relation(fields: [usuarioId], references: [id])
-  Quiz      Quiz?    @relation(fields: [quizId], references: [id])
-}
