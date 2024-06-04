@@ -7,12 +7,12 @@ export const findOneQuizService = async (id: string) => {
     if (!quiz) {
       return {};
     }
-
     const perguntasRespostas = await clientDataBase.pergunta.findMany({
       where: {
         quizId: id,
       },
       select: {
+        id: true,
         titulo: true,
         Pergunta_Respota: {
           select: {
@@ -25,11 +25,12 @@ export const findOneQuizService = async (id: string) => {
 
     // transforma em um modelo mais facil para ser consumido no front end
     const perguntas = perguntasRespostas.map((item) => ({
+      id: item.id,
       titulo: item.titulo,
       respostas: item.Pergunta_Respota.map((pr) => ({
         id: pr.resposta.id,
         descricao: pr.resposta.descricao,
-        resultado: pr.resultado,
+        // resultado: pr.resultado,
       })),
     }));
 
