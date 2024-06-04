@@ -1,16 +1,17 @@
 import type { Request, Response } from "express";
 
-import { createUserService } from "../services/user/createUser.service.js";
-import { deleteUserService } from "../services/user/deleteUser.service.js";
-import { findAllUsersService } from "../services/user/findAllUsers.service.js";
-import { findOneUserService } from "../services/user/findOneUser.service.js";
-import { realiseLogin } from "../services/user/realiseLogin.service.js";
+import {
+  encontrarCriador,
+  encontrarTodosCriadores,
+  entrar,
+  novoCriador,
+  removerCriador,
+} from "../services/criador.js";
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    console.log("createUser, req.body", req.body);
-    const { usuario, senha } = req.body;
-    const user = await createUserService(usuario, senha);
+    const { nome, email, senha } = req.body;
+    const user = await novoCriador(nome, email, senha);
     return res.status(201).json(user);
   } catch (error) {
     console.log(error);
@@ -19,8 +20,7 @@ export const createUser = async (req: Request, res: Response) => {
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
-    console.log("getAllUsers,  no req.body no params");
-    const users = await findAllUsersService();
+    const users = await encontrarTodosCriadores();
     return res.json(users);
   } catch (error) {
     console.log(error);
@@ -29,9 +29,8 @@ export const getAllUsers = async (req: Request, res: Response) => {
 
 export const getOneUser = async (req: Request, res: Response) => {
   try {
-    console.log("getAllUsers, req.params.id: ", req.params.id);
-    const idUser = req.params.id;
-    const user = await findOneUserService(idUser);
+    const { id } = req.params;
+    const user = await encontrarCriador(id);
     return res.json(user);
   } catch (error) {
     console.log(error);
@@ -40,9 +39,8 @@ export const getOneUser = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response) => {
   try {
-    console.log("deleteUser, req.params.id: ", req.params.id);
-    const idUser = req.params.id;
-    await deleteUserService(idUser);
+    const { id } = req.params;
+    await removerCriador(id);
     return res.status(200).json();
   } catch (error) {
     console.log(error);
@@ -51,9 +49,8 @@ export const deleteUser = async (req: Request, res: Response) => {
 
 export const postLogin = async (req: Request, res: Response) => {
   try {
-    console.log("login, req.body ", req.body);
-    const { usuario, senha } = req.body;
-    const resp = await realiseLogin(usuario, senha);
+    const { email, senha } = req.body;
+    const resp = await entrar(email, senha);
     return res.status(200).json(resp);
   } catch (error) {
     console.log(error);

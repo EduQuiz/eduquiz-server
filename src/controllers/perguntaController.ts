@@ -1,18 +1,19 @@
 import type { Request, Response } from "express";
-import type { PerguntaDto } from "../dtos/perguntaDto.js";
-
-import { createPergunta } from "../services/pergunta/createPergunta.service.js";
-import { deleteOnePergunta } from "../services/pergunta/deletePergunta.service.js";
-import { findAllPerguntas } from "../services/pergunta/findAllPergunta.service.js";
-import { findAllPerguntasWithQuizId } from "../services/pergunta/findAllPerguntasWithQuizId.service.js";
-import { findOnePergunta } from "../services/pergunta/findOneQuestion.service.js";
-import { upersetPergunta } from "../services/pergunta/upersetPergunta.service.js";
+import type { Pergunta, PerguntaEAlternativas } from "../services/pergunta.js";
+import {
+  deleteOnePergunta,
+  findAllPerguntas,
+  findAllPerguntasWithQuizId,
+  findOnePergunta,
+  novaPergunta,
+  upersetPergunta,
+} from "../services/pergunta.js";
 
 export const postPergunta = async (req: Request, res: Response) => {
   try {
     console.log("postPergunta,  body:", req.body);
-    const data: PerguntaDto = req.body;
-    const resp = await createPergunta(data);
+    const data: PerguntaEAlternativas = req.body;
+    const resp = await novaPergunta(data);
     return res.status(200).json(resp);
   } catch (error) {
     console.log(error);
@@ -66,7 +67,7 @@ export const deletePergunta = async (req: Request, res: Response) => {
 export const updatePergunta = async (req: Request, res: Response) => {
   try {
     console.log("updatePergunta,  body:", req.body);
-    const data: PerguntaDto = req.body;
+    const data: Pergunta = req.body;
     const resp = await upersetPergunta(data);
     return res.status(200).json(resp);
   } catch (error) {

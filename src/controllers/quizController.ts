@@ -1,14 +1,13 @@
 import type { Request, Response } from "express";
-import type { CreateQuizDto } from "../dtos/createQuizDto.js";
-
-import { createQuizService } from "../services/quiz/createQuiz.service.js";
-import { deleteQuizService } from "../services/quiz/deleteQuiz.service.js";
-import { findAllQuizzesService } from "../services/quiz/findAll-quizzes.service.js";
-import { findOneQuizService } from "../services/quiz/findOne-quiz.service.js";
+import {
+  createQuizService,
+  deleteQuizService,
+  findAllQuizzesService,
+  findOneQuizService,
+} from "../services/questionario.js";
 
 export const getAllQuizzes = async (req: Request, res: Response) => {
   try {
-    console.log("getAllQuizzes,  no params e no body:");
     const quizzes = await findAllQuizzesService();
     return res.json(quizzes);
   } catch (error) {
@@ -18,9 +17,8 @@ export const getAllQuizzes = async (req: Request, res: Response) => {
 
 export const getOneQuizze = async (req: Request, res: Response) => {
   try {
-    console.log("getOneQuizze,  params.id:", req.params.id);
-    const idQuiz = req.params.id;
-    const quiz = await findOneQuizService(idQuiz);
+    const { id } = req.params;
+    const quiz = await findOneQuizService(id);
     return res.json(quiz);
   } catch (error) {
     console.log(error);
@@ -29,8 +27,7 @@ export const getOneQuizze = async (req: Request, res: Response) => {
 
 export const createQuiz = async (req: Request, res: Response) => {
   try {
-    console.log("createQuiz, req.body", req.body);
-    const data: CreateQuizDto = req.body;
+    const data = req.body;
     const quiz = await createQuizService(data);
     return res.status(201).json(quiz);
   } catch (error) {
@@ -40,9 +37,8 @@ export const createQuiz = async (req: Request, res: Response) => {
 
 export const deleteQuiz = async (req: Request, res: Response) => {
   try {
-    console.log("deleteQuiz, params.id", req.params.id);
-    const idQuiz = req.params.id;
-    await deleteQuizService(idQuiz);
+    const { id } = req.params;
+    await deleteQuizService(id);
     return res.status(204).json();
   } catch (error) {
     console.log(error);
