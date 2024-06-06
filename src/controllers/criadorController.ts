@@ -1,4 +1,8 @@
+import { createSecretKey } from "node:crypto";
 import type { Request, Response } from "express";
+import { SignJWT } from "jose";
+
+const secret = createSecretKey(process.env.JWT_SECRET || "", "utf-8");
 
 import {
   encontrarCriador,
@@ -50,8 +54,17 @@ export const deleteUser = async (req: Request, res: Response) => {
 export const postLogin = async (req: Request, res: Response) => {
   try {
     const { email, senha } = req.body;
-    const resp = await entrar(email, senha);
-    return res.status(200).json(resp);
+
+    const criador = await entrar(email, senha);
+
+    if (criador) {
+      const jwt = await new SignJWT({ id: criador.id })
+        .setProtectedHeader({ alg: "HS256" })
+        .sign(secret);
+      res.cookie("jwt", jwt, { sameSite: "none", secure: true });
+    }
+
+    return res.status(200).json({ id: criador?.id, nome: criador?.nome });
   } catch (error) {
     console.error(error);
   }
