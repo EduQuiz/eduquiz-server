@@ -7,9 +7,13 @@ import { criadorRouter } from "./routes/criadorRouter.js";
 import { perguntaRouter } from "./routes/perguntaRouter.js";
 import { questionarioRouter } from "./routes/quizRouter.js";
 import { respostaRouter } from "./routes/respostaRouter.js";
+import { createSecretKey } from "node:crypto";
 
-const auth = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req.cookies);
+const secret = createSecretKey(process.env.JWT_SECRET || "", "utf-8");
+
+const auth = async (req: Request, res: Response, next: NextFunction) => {
+  const { jwt } = req.cookies;
+  await jwtVerify(jwt, secret);
   next();
 };
 
