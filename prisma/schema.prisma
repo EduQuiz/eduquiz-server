@@ -36,6 +36,7 @@ model Alternativa {
 
 model Resposta {
   id             String       @id @default(cuid())
+  identificador  String
   questionarioId String
   questionario   Questionario @relation(fields: [questionarioId], references: [id])
   perguntaId     String
