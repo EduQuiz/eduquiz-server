@@ -33,3 +33,37 @@ export const listarTodas = async () => {
     console.error(error);
   }
 };
+
+export const notas = async (id: string) => {
+  try {
+    const numeroDePerguntas = await db.questionario.findMany({
+      select: {
+        _count: {
+          select: { perguntas: true },
+        },
+      },
+    });
+
+    const acertos = await db.$queryRaw`
+      SELECT 
+        R.identificador,
+        COUNT(A.ID)::int AS "acertos"
+      FROM 
+        "Resposta" AS R
+      LEFT JOIN 
+        "Alternativa" as A 
+        ON R."alternativaId" = A.id 
+        AND R."perguntaId" = A."perguntaId"
+        and A.correta = true 
+      WHERE
+        R."questionarioId" = ${id}
+      GROUP BY R.identificador`;
+
+    return {
+      questionario: { id, perguntas: numeroDePerguntas[0]._count.perguntas },
+      acertos,
+    };
+  } catch (error) {
+    console.error(error);
+  }
+};
