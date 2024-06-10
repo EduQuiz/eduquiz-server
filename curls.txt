@@ -1,0 +1,16 @@
+curl -X POST http://localhost:4000/criador \
+  -H "Content-Type: application/json" \
+  --data '{"nome": "nome", "email": "email", "senha": "senha"}'
+
+curl -X POST http://localhost:4000/criador/entrar \
+  -H "Content-Type: application/json" \
+  --data '{"email": "email", "senha": "senha"}'
+
+curl -X POST http://localhost:4000/pergunta \
+  -H "Content-Type: application/json" \
+  --data '{"pergunta": "Qual é a capital da França?", "alternativas": [{"alternativa": "Berlim"}, {"alternativa": "Lisboa"}, {"alternativa": "Madri"}, {"alternativa": "Paris", "correta": true}]}'
+
+curl -X POST http://localhost:4000/questionario \
+  -H "Content-Type: application/json" \
+  --data '{"titulo": "Questionário", "criador": "clx0nmhgx0001uyritwnyyk7p", "perguntas": ["clx0ocoqr000116gkonezrpz4"]}'
+

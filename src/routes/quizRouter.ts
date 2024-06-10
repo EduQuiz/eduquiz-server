@@ -5,20 +5,11 @@ import {
   deleteQuiz,
   getAllQuizzes,
   getOneQuizze,
-} from "../controllers/quizController.js";
+} from "../controllers/questionarioController.js";
 
-const quizRouter = express.Router();
+export const questionarioRouter = express.Router();
 
-// Rota para obter todos os quizzes
-quizRouter.get("/", getAllQuizzes);
-
-// Rota para obter um quiz por ID
-quizRouter.get("/:id", getOneQuizze);
-
-// Rota para salvar quiz
-quizRouter.post("/create", createQuiz);
-
-// Rota para deleter quiz
-quizRouter.delete("/:id", deleteQuiz);
-
-export default quizRouter;
+questionarioRouter.get("/", getAllQuizzes);
+questionarioRouter.post("/", createQuiz);
+questionarioRouter.get("/:id", getOneQuizze);
+questionarioRouter.delete("/:id", deleteQuiz);

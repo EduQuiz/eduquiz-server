@@ -9,19 +9,11 @@ import {
   updatePergunta,
 } from "../controllers/perguntaController.js";
 
-const perguntaRouter = express.Router();
+export const perguntaRouter = express.Router();
 
-// Rota para obter todos os quizzes
+perguntaRouter.get("/", getAllPerguntas);
 perguntaRouter.post("/", postPergunta);
-
-perguntaRouter.get("/all", getAllPerguntas);
-
-perguntaRouter.get("/all/:quizId", getAllPerguntasWithIdQuiz);
-
 perguntaRouter.get("/:id", getOnePergunta);
-
 perguntaRouter.delete("/:id", deletePergunta);
-
-perguntaRouter.post("/update", updatePergunta);
-
-export default perguntaRouter;
+perguntaRouter.patch("/:id", updatePergunta);
+//perguntaRouter.get("/questionario/:id", getAllPerguntasWithIdQuiz);

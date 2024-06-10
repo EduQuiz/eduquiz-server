@@ -1,6 +1,6 @@
 generator client {
   provider = "prisma-client-js"
-  output = "../dist/prisma"
+  output   = "../dist/prisma"
 }
 
 datasource db {
@@ -9,26 +9,46 @@ datasource db {
 }
 
 model Questionario {
-  id          String        @id @default(cuid())
-  titulo      String
+  id        String     @id @default(cuid())
+  titulo    String
+  criadorId String
+  criador   Criador    @relation(fields: [criadorId], references: [id], onDelete: Cascade)
+  perguntas Pergunta[]
+  respostas Resposta[]
 }
 
 model Pergunta {
-  id               String             @id @default(cuid())
-  pergunta           String
-  imagem           String
+  id            String         @id @default(cuid())
+  pergunta      String
+  questionarios Questionario[]
+  alternativas  Alternativa[]
+  respostas     Resposta[]
 }
 
 model Alternativa {
-  id               String             @id @default(cuid())
-  alternativa        String
-  correta Boolean
+  id          String     @id @default(cuid())
+  alternativa String
+  pergunta    Pergunta   @relation(fields: [perguntaId], references: [id], onDelete: Cascade)
+  perguntaId  String
+  respostas   Resposta[]
+  correta     Boolean    @default(false)
+}
+
+model Resposta {
+  id             String       @id @default(cuid())
+  identificador  String
+  questionarioId String
+  questionario   Questionario @relation(fields: [questionarioId], references: [id])
+  perguntaId     String
+  pergunta       Pergunta     @relation(fields: [perguntaId], references: [id])
+  alternativaId  String
+  alternativa    Alternativa  @relation(fields: [alternativaId], references: [id])
 }
 
 model Criador {
-  id         String        @id @default(cuid())
-  nome       String
-  email      String
-  senha      String
+  id            String         @id @default(cuid())
+  nome          String
+  email         String         @unique
+  senha         String
+  questionarios Questionario[]
 }
-
