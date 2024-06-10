@@ -45,19 +45,20 @@ export const notas = async (id: string) => {
     });
 
     const acertos = await db.$queryRaw`
-      SELECT 
+      SELECT
         R.identificador,
         COUNT(A.ID)::int AS "acertos"
-      FROM 
+      FROM
         "Resposta" AS R
-      LEFT JOIN 
-        "Alternativa" as A 
-        ON R."alternativaId" = A.id 
+      LEFT JOIN
+        "Alternativa" as A
+        ON R."alternativaId" = A.id
         AND R."perguntaId" = A."perguntaId"
-        and A.correta = true 
+        and A.correta = true
       WHERE
         R."questionarioId" = ${id}
-      GROUP BY R.identificador`;
+      GROUP BY R.identificador
+      ORDER BY "acertos" DESC;`;
 
     return {
       questionario: { id, perguntas: numeroDePerguntas[0]._count.perguntas },
