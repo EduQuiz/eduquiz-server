@@ -38,7 +38,7 @@ export const encontarTodos = async () => {
 
 export const encontrarQuestionario = async (id: string) => {
   try {
-    return await db.questionario.findUnique({
+    const res = await db.questionario.findUnique({
       where: { id },
       include: {
         perguntas: {
@@ -48,6 +48,19 @@ export const encontrarQuestionario = async (id: string) => {
         },
       },
     });
+
+    return {
+      id: res?.id,
+      titulo: res?.titulo,
+      perguntas: res?.perguntas.map((p) => ({
+        id: p.id,
+        pergunta: p.pergunta,
+        alternativas: p.alternativas.map((a) => ({
+          id: a.id,
+          alternativa: a.alternativa,
+        })),
+      })),
+    };
   } catch (error) {
     console.error(error);
   }
