@@ -28,7 +28,8 @@ export const removerCriador = async (id: string) => {
 
 export const encontrarTodosCriadores = async () => {
   try {
-    return await db.criador.findMany();
+    const res = await db.criador.findMany();
+    return res.map((c) => ({ id: c.id, nome: c.nome, email: c.email }));
   } catch (error) {
     console.error(error);
   }
