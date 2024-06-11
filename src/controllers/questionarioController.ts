@@ -27,7 +27,8 @@ export const getOneQuizze = async (req: Request, res: Response) => {
 
 export const createQuiz = async (req: Request, res: Response) => {
   try {
-    const { titulo, criador, perguntas } = req.body;
+    const { titulo, perguntas } = req.body;
+    const criador = res.locals.id;
     const quiz = await criarQuestionario(titulo, criador, perguntas);
     return res.status(201).json(quiz);
   } catch (error) {
