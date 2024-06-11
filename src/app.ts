@@ -42,6 +42,10 @@ app.use("/criador", criadorRouter);
 app.use("/pergunta", perguntaRouter);
 app.use("/resposta", respostaRouter);
 
+app.get("/", async (req: Request, res: Response) => {
+  res.redirect("/api-docs");
+});
+
 const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
