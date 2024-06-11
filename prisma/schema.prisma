@@ -47,7 +47,6 @@ model Resposta {
 
 model Criador {
   id            String         @id @default(cuid())
-  nome          String
   email         String         @unique
   senha         String
   questionarios Questionario[]

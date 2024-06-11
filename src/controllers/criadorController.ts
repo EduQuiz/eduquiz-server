@@ -14,9 +14,9 @@ import {
 
 export const createUser = async (req: Request, res: Response) => {
   try {
-    const { nome, email, senha } = req.body;
-    const user = await novoCriador(nome, email, senha);
-    return res.status(201).json(user);
+    const { email, senha } = req.body;
+    const criador = await novoCriador(email, senha);
+    return res.status(201).json({ id: criador?.id, email: criador?.email });
   } catch (error) {
     console.error(error);
   }
@@ -64,7 +64,7 @@ export const postLogin = async (req: Request, res: Response) => {
       res.cookie("jwt", jwt, { sameSite: "none", secure: true });
     }
 
-    return res.status(200).json({ id: criador?.id, nome: criador?.nome });
+    return res.status(200).json({ id: criador?.id, email: criador?.email });
   } catch (error) {
     console.error(error);
   }

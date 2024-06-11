@@ -1,6 +1,5 @@
 POST http://localhost:4000/criador
 {
-  "nome": "nome",
   "email": "email",
   "senha": "senha"
 }
@@ -103,7 +102,6 @@ idpergunta4: jsonpath "$['id']"
 POST http://localhost:4000/questionario
 {
   "titulo": "Questionário",
-  "criador": "{{idcriador}}",
   "perguntas": [
     "{{idpergunta1}}",
     "{{idpergunta2}}",
