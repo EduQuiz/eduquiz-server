@@ -45,11 +45,8 @@ export const removerPergunta = async (id: string) => {
 
 export const findAllPerguntas = async () => {
   try {
-    return await db.pergunta.findMany({
-      include: {
-        alternativas: true,
-      },
-    });
+    const res = await db.pergunta.findMany();
+    return res.map((p) => ({ id: p.id, pergunta: p.pergunta }));
   } catch (error) {
     console.error(error);
   }
