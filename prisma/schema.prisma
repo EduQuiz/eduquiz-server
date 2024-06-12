@@ -23,6 +23,8 @@ model Pergunta {
   questionarios Questionario[]
   alternativas  Alternativa[]
   respostas     Resposta[]
+  criador       Criador        @relation(fields: [criadorId], references: [id])
+  criadorId     String
 }
 
 model Alternativa {
@@ -50,4 +52,5 @@ model Criador {
   email         String         @unique
   senha         String
   questionarios Questionario[]
+  perguntas     Pergunta[]
 }
