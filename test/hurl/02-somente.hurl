@@ -1,16 +1,13 @@
-POST http://localhost:4000/criador
+POST http://localhost:4000/criador/entrar
 {
-  "email": "email",
-  "senha": "senha"
+  "email": "abc",
+  "senha": "abc"
 }
-HTTP 201
-[Captures]
-idcriador: jsonpath "$['id']"
+HTTP 200
 
 POST http://localhost:4000/pergunta
 {
   "pergunta": "Qual é a capital da França?",
-  "criadorId": "{{idcriador}}",
   "alternativas": [
     {
       "alternativa": "Berlim"

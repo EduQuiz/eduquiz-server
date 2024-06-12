@@ -18,12 +18,14 @@ export interface PerguntaEAlternativas {
 
 export const novaPergunta = async (
   pergunta: string,
+  id: string,
   alternativas: { alternativa: string; correta?: boolean }[],
 ) => {
   try {
     return await db.pergunta.create({
       data: {
         pergunta,
+        criadorId: id,
         alternativas: {
           create: alternativas,
         },

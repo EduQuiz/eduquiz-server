@@ -12,7 +12,8 @@ import {
 export const postPergunta = async (req: Request, res: Response) => {
   try {
     const { pergunta, alternativas } = req.body;
-    const resp = await novaPergunta(pergunta, alternativas);
+    const { id } = res.locals;
+    const resp = await novaPergunta(pergunta, id, alternativas);
     return res.status(201).json(resp);
   } catch (error) {
     console.error(error);
