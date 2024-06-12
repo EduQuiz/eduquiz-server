@@ -21,7 +21,8 @@ export const postPergunta = async (req: Request, res: Response) => {
 
 export const getAllPerguntas = async (req: Request, res: Response) => {
   try {
-    const resp = await findAllPerguntas();
+    const { id } = res.locals;
+    const resp = await findAllPerguntas(id);
     return res.status(200).json(resp);
   } catch (error) {
     console.error(error);

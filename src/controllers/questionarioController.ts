@@ -8,7 +8,8 @@ import {
 
 export const getAllQuizzes = async (req: Request, res: Response) => {
   try {
-    const quizzes = await encontarTodos();
+    const { id } = res.locals;
+    const quizzes = await encontarTodos(id);
     return res.json(quizzes);
   } catch (error) {
     console.log(error);

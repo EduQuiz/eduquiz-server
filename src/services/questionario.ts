@@ -28,9 +28,9 @@ export const removerQuestionario = async (id: string) => {
   }
 };
 
-export const encontarTodos = async () => {
+export const encontarTodos = async (id: string) => {
   try {
-    return await db.questionario.findMany();
+    return await db.questionario.findMany({ where: { criadorId: id } });
   } catch (error) {
     console.error(error);
   }

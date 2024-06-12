@@ -43,9 +43,9 @@ export const removerPergunta = async (id: string) => {
   }
 };
 
-export const findAllPerguntas = async () => {
+export const findAllPerguntas = async (id) => {
   try {
-    const res = await db.pergunta.findMany();
+    const res = await db.pergunta.findMany({ where: { criadorId: id } });
     return res.map((p) => ({ id: p.id, pergunta: p.pergunta }));
   } catch (error) {
     console.error(error);
