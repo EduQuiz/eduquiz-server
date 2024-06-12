@@ -24,12 +24,20 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
+const log = (req: Request, res: Response, next: NextFunction) => {
+  console.log(
+    `${req.path} ${JSON.stringify(res.locals)} ${JSON.stringify(req.body)}`,
+  );
+  next();
+};
+
 const app = express();
 
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(auth);
+app.use(log);
 
 const swaggerDocument = JSON.parse(
   readFileSync(new URL("swagger.json", import.meta.url), "utf-8"),
