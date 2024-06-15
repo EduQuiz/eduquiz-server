@@ -23,6 +23,8 @@ model Pergunta {
   questionarios Questionario[]
   alternativas  Alternativa[]
   respostas     Resposta[]
+  criador       Criador        @relation(fields: [criadorId], references: [id])
+  criadorId     String
 }
 
 model Alternativa {
@@ -40,15 +42,15 @@ model Resposta {
   questionarioId String
   questionario   Questionario @relation(fields: [questionarioId], references: [id])
   perguntaId     String
-  pergunta       Pergunta     @relation(fields: [perguntaId], references: [id])
+  pergunta       Pergunta     @relation(fields: [perguntaId], references: [id], onDelete: Cascade)
   alternativaId  String
   alternativa    Alternativa  @relation(fields: [alternativaId], references: [id])
 }
 
 model Criador {
   id            String         @id @default(cuid())
-  nome          String
   email         String         @unique
   senha         String
   questionarios Questionario[]
+  perguntas     Pergunta[]
 }

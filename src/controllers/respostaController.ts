@@ -38,7 +38,6 @@ export const notasDoQuestionario = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const n = await notas(id);
-    console.log(n);
     res.status(200).json(n);
   } catch (error) {
     console.error(error);

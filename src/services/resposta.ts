@@ -42,6 +42,13 @@ export const notas = async (id: string) => {
           select: { perguntas: true },
         },
       },
+      where: {
+        id: id,
+      },
+    });
+
+    const questionario = await db.questionario.findUnique({
+      where: { id: id },
     });
 
     const acertos = await db.$queryRaw`
@@ -61,7 +68,11 @@ export const notas = async (id: string) => {
       ORDER BY "acertos" DESC;`;
 
     return {
-      questionario: { id, perguntas: numeroDePerguntas[0]._count.perguntas },
+      questionario: {
+        id,
+        titulo: questionario?.titulo,
+        perguntas: numeroDePerguntas[0]._count.perguntas,
+      },
       acertos,
     };
   } catch (error) {

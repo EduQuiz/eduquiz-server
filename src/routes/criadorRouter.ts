@@ -1,5 +1,4 @@
-import express from "express";
-
+import { Router } from "express";
 import {
   createUser,
   deleteUser,
@@ -8,7 +7,7 @@ import {
   postLogin,
 } from "../controllers/criadorController.js";
 
-export const criadorRouter = express.Router();
+export const criadorRouter = Router();
 
 criadorRouter.post("/entrar", postLogin);
 criadorRouter.post("/", createUser);

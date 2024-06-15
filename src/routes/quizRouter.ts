@@ -1,5 +1,4 @@
-import express from "express";
-
+import { Router } from "express";
 import {
   createQuiz,
   deleteQuiz,
@@ -7,7 +6,7 @@ import {
   getOneQuizze,
 } from "../controllers/questionarioController.js";
 
-export const questionarioRouter = express.Router();
+export const questionarioRouter = Router();
 
 questionarioRouter.get("/", getAllQuizzes);
 questionarioRouter.post("/", createQuiz);

@@ -1,14 +1,9 @@
 import { db } from "../db.js";
 
-export const novoCriador = async (
-  nome: string,
-  email: string,
-  senha: string,
-) => {
+export const novoCriador = async (email: string, senha: string) => {
   try {
     return await db.criador.create({
       data: {
-        nome,
         email,
         senha,
       },
@@ -29,7 +24,7 @@ export const removerCriador = async (id: string) => {
 export const encontrarTodosCriadores = async () => {
   try {
     const res = await db.criador.findMany();
-    return res.map((c) => ({ id: c.id, nome: c.nome, email: c.email }));
+    return res.map((c) => ({ id: c.id, email: c.email }));
   } catch (error) {
     console.error(error);
   }
