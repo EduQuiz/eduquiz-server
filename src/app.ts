@@ -26,7 +26,7 @@ const auth = async (req: Request, res: Response, next: NextFunction) => {
 
 const log = (req: Request, res: Response, next: NextFunction) => {
   console.log(
-    `${req.path} ${JSON.stringify(res.locals)} ${JSON.stringify(req.body)}`,
+    `${req.method} ${req.path} ${JSON.stringify(res.locals)} ${JSON.stringify(req.body)}`,
   );
   next();
 };
