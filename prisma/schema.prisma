@@ -42,7 +42,7 @@ model Resposta {
   questionarioId String
   questionario   Questionario @relation(fields: [questionarioId], references: [id])
   perguntaId     String
-  pergunta       Pergunta     @relation(fields: [perguntaId], references: [id])
+  pergunta       Pergunta     @relation(fields: [perguntaId], references: [id], onDelete: Cascade)
   alternativaId  String
   alternativa    Alternativa  @relation(fields: [alternativaId], references: [id])
 }
