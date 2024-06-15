@@ -1,19 +1,14 @@
-import express from "express";
-
+import { Router } from "express";
 import {
   deletePergunta,
   getAllPerguntas,
-  getAllPerguntasWithIdQuiz,
   getOnePergunta,
   postPergunta,
-  updatePergunta,
 } from "../controllers/perguntaController.js";
 
-export const perguntaRouter = express.Router();
+export const perguntaRouter = Router();
 
 perguntaRouter.get("/", getAllPerguntas);
 perguntaRouter.post("/", postPergunta);
 perguntaRouter.get("/:id", getOnePergunta);
 perguntaRouter.delete("/:id", deletePergunta);
-perguntaRouter.patch("/:id", updatePergunta);
-//perguntaRouter.get("/questionario/:id", getAllPerguntasWithIdQuiz);
