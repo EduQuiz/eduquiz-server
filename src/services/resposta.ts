@@ -42,6 +42,9 @@ export const notas = async (id: string) => {
           select: { perguntas: true },
         },
       },
+      where: {
+        id: id,
+      },
     });
 
     const acertos = await db.$queryRaw`
