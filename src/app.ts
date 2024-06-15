@@ -50,7 +50,7 @@ app.use("/criador", criadorRouter);
 app.use("/pergunta", perguntaRouter);
 app.use("/resposta", respostaRouter);
 
-app.get("/", async (req: Request, res: Response) => {
+app.get("/", (_req: Request, res: Response) => {
   res.redirect("/api-docs");
 });
 
